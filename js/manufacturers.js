@@ -1,22 +1,13 @@
-// Get all manufactures
-// $.get("https://webtechcars.herokuapp.com/api/manufacturers", function (manufacturers) {
-//     for (var i = 0; i < manufacturers.length; i++) {
-//         $(".contentbox").append('<div class="manufacturer-list" manufacturer-data="' +
-//             manufacturers[i].name + '">' + "<strong>" + manufacturers[i].name + "</strong><div>" +
-//             "<small>Country: " + manufacturers[i].country + "<br> Founded on: " +
-//             manufacturers[i].founded + "</small></div><br\></div>");
-//     }
-// }
-// );
+let manufactures = [];
 
 // List manufactures
 $(".contentbox").empty();
 
 $.getJSON("https://webtechcars.herokuapp.com/api/manufacturers", function (data) {
+    manufactures = data;
+
     var table = $("<table></table>");
     table.append("<th>Name</th><th>Country</th><th>Founded</th><th>Edit</th><th>Delete</th>");
-    // table.append("<th>Edit</th>").find('th').addClass('edit');
-    // table.append("<th>Delete</th>").find('th').addClass('delete');
 
     $.each(data, function (key, value) {
         var row = $("<tr></tr>");
@@ -33,6 +24,39 @@ $.getJSON("https://webtechcars.herokuapp.com/api/manufacturers", function (data)
         row.append(currentDelete);
         table.append(row);
     });
-
     $(".contentbox").html(table);
 });
+
+// Fill forms input field
+$(document).ready(function () {
+    $("body").on("click", "td", function (event) {
+        console.log(event.target.innerText)
+        if (event.target.innerText === 'Edit') {
+            $("#edit-form").css("display", "flex");
+
+            var result = manufactures.filter(function (v) {
+                return v._id === event.target.id; // Filter out the appropriate one
+            })[0];
+
+            $('#edit-name').val(result.name);
+            $('#edit-country').val(result.country);
+            $('#edit-founded').val(result.founded);
+        }
+    });
+
+    // Adding new manufacture
+    $("#add-manufacturer").click(function () {
+        $('#edit-name').val('');
+        $('#edit-country').val('');
+        $('#edit-founded').val('');
+        $("#edit-form").css("display", "flex");
+    });
+});
+
+
+
+window.onload = function () {
+    $("#cancel-edit").click(function () {
+        $("#edit-form").css("display", "none");
+    });
+}
