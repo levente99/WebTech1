@@ -1,41 +1,42 @@
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Webtech1 Cars</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <script src="js/jquery-3.5.1.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/manufacturers.js"></script>
-</head>
-
-<div id="header"></div>
-
 <div id="main-content">
     <h1>Gyártók</h1>
     <div class="contentbox">
 
     </div>
-
     <form id="edit-form" class="edit-form edit-form-manufacturers">
         <div class="form-input">
             <label for="name">Name: </label>
-            <input type="text" name="name" id="edit-name" required>
+            <input type="text" name="name" id="edit-manufacturers-name" required>
         </div>
         <div class="form-input">
             <label for="country">Country: </label>
-            <input type="text" name="country" id="edit-country" required>
+            <input type="text" name="country" id="edit-manufacturers-country" required>
         </div>
         <div class="form-input">
             <label for="founded">Founded: </label>
-            <input type="text" name="founded" id="edit-founded" required>
+            <input type="text" name="founded" id="edit-manufacturers-founded" required>
         </div>
         <div class="form-input">
-            <input type="button" id="post-edit" value="Módosítás!">
-            <input type="button" id="cancel-edit" value="Mégse!">
+            <input type="button" class="post-manufacturers-edit" value="Módosítás!">
+            <input type="button" id="cancel-edit" onclick="cancelEdit()" value="Mégse!">
         </div>
     </form>
 
-    <input type="button" id="add-manufacturer" value="+">
-</div>
+    <input type="button" onclick="addManufacturerForm()" id="add-manufacturer" value="+">
 
-<div id="footer"></div>
+    <script>
+        function cancelEdit() {
+            console.log("cancelEd")
+            document.getElementById("edit-form").style.display = "none";
+        }
+
+        function addManufacturerForm() {
+            console.log("manu")
+            $('#edit-manufacturers-name').val('');
+            $('#edit-manufacturers-country').val('');
+            $('#edit-manufacturers-founded').val('');
+            $('.post-manufacturers-edit').val('Hozzáadás!')
+            $("#edit-form").css("display", "flex");
+        }
+    </script>
+</div>

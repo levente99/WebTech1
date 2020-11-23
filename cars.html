@@ -1,56 +1,62 @@
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Webtech1 Cars</title>
-    <link rel="stylesheet" type="text/css" href="css/home.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <script src="js/jquery-3.5.1.js"></script>
-    <script src="js/cars.js"></script>
-    <script src="js/main.js"></script>
-</head>
-
-<div id="header"></div>
-
-<div id="main-content">
+<div id="main-content" class="car-content">
     <h1>Autók</h1>
     <div class="contentbox">
 
     </div>
-    <form id="edit-form" class="edit-form-car edit-form">
+    <form id="car-edit-form" class="edit-form-car edit-form">
         <div class="form-input">
             <label for="name">Name: </label>
-            <input type="text" name="name" id="edit-name" required>
+            <input type="text" name="name" id="edit-car-name" required>
         </div>
         <div class="form-input">
             <label for="consumption">Consumption: </label>
-            <input type="text" name="consumption" id="edit-consumption" required>
+            <input type="text" name="consumption" id="edit-car-consumption" required>
         </div>
         <div class="form-input">
             <label for="color">Color: </label>
-            <input type="text" name="color" id="edit-color" required>
+            <input type="text" name="color" id="edit-car-color" required>
         </div>
         <div class="form-input">
             <label for="manufacturer">Manufacturer: </label>
-            <input type="text" name="manufacturer" id="edit-manufacturer" required>
+            <input type="text" name="manufacturer" id="edit-car-manufacturer" required>
         </div>
         <div class="form-input">
             <label for="available">Available: </label>
-            <input type="text" name="available" id="edit-available" required>
+            <input type="text" name="available" id="edit-car-available" required>
         </div>
         <div class="form-input">
             <label for="year">Year: </label>
-            <input type="text" name="year" id="edit-year" required>
+            <input type="text" name="year" id="edit-car-year" required>
         </div>
         <div class="form-input">
             <label for="horsepower">Horsepower: </label>
-            <input type="text" name="horsepower" id="edit-horsepower" required>
+            <input type="text" name="horsepower" id="edit-car-horsepower" required>
         </div>
-        <div class="form-input">
-            <input type="button" id="post-edit" value="Módosítás!">
-            <input type="button" id="cancel-edit" value="Mégse!">
+        <div class="form-input-buttons">
+            <input type="button" class="post-cars-edit" onclick="sendPost(this.id)" value="Módosítás!">
+            <input type="button" id="cancel-edit" onclick="cancelEdit()" value="Mégse!">
         </div>
     </form>
 
-    <input type="button" id="add-car" value="+">
+    <input type="button" onclick="addCarForm()" id="add-car" value="+">
+
+    <script>
+        function cancelEdit() {
+            console.log("cancelEd")
+            document.getElementById("car-edit-form").style.display = "none";
+        }
+
+        function addCarForm() {
+            console.log("manu2")
+            $('#edit-name').val('');
+            $('#edit-consumption').val('');
+            $('#edit-color').val('');
+            $('#edit-manufacturer').val('');
+            $('#edit-available').val('');
+            $('#edit-year').val('');
+            $('#edit-horsepower').val('');
+            $('.post-cars-edit').val('Hozzáadás!')
+            $("#car-edit-form").css("display", "flex");
+        }
+    </script>
 </div>
-<div id="footer"></div>

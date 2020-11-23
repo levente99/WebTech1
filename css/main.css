@@ -10,7 +10,6 @@
 .header,
 .edit-form-manufacturers {
     position: absolute;
-    top: 4;
     margin: 10px;
     padding: 10px;
     margin-left: auto;
@@ -32,6 +31,10 @@
     box-shadow: 0px 0px 21px -9px rgba(0, 0, 0, 0.75);
     transition: background-color 1s;
     z-index: 100;
+}
+
+.header {
+    top: 0;
 }
 
 .fixed {
@@ -92,6 +95,11 @@
     margin-bottom: 40px;
 }
 
+#container {
+    min-height: 400px;
+    margin-bottom: 500px;
+}
+
 .main-img1 {
     width: 50%;
     margin: 30px;
@@ -117,9 +125,8 @@
     display: none;
     flex-direction: column;
     justify-content: center;
-    height: 430px;
+    height: 450px;
     width: 450px;
-    top: 130;
     background-color: rgba(255, 102, 102, 0.938);
     border-radius: 30px;
     margin-left: auto;
@@ -127,12 +134,9 @@
 }
 
 .edit-form-manufacturers {
-    width: 430px;
-    height: 200px;
-}
-
-.edit-form-car {
-    position: relative;
+    margin-top: 150px;
+    width: 400px;
+    height: 250px;
 }
 
 .form-input {
@@ -144,8 +148,8 @@
 #edit-form input[type=text] {
     border: none;
     border-bottom: 0.125rem solid rgb(255, 102, 102);
-    width: 170px;
-    height: 25px;
+    width: 150px;
+    height: 20px;
     font-size: 1.0625rem;
     padding-left: 0.875rem;
     line-height: 147.6%;
@@ -155,6 +159,12 @@
     outline: none;
 }
 
+
+.edit-form-car {
+    margin-top: 100px;
+    position: relative;
+}
+
 .form-input label {
     width: 150px;
     text-align: right;
@@ -162,7 +172,8 @@
 }
 
 #cancel-edit,
-#post-edit {
+.post-cars-edit,
+.post-manufacturers-edit {
     display: inline-block;
     padding: 1em 1em;
     margin: 0 0.3em 0.3em 0;
@@ -200,6 +211,7 @@ tr:hover,
 /* Tables style */
 table {
     margin: 20px auto;
+    margin-bottom: 100px;
 }
 
 th,
@@ -250,8 +262,8 @@ td {
 /* Add button */
 #add-car,
 #add-manufacturer {
-    position: absolute;
-    top: 750;
+    position: fixed;
+    bottom: 0;
     margin-top: 20px;
     font-size: 30px;
     text-align: center;
@@ -268,6 +280,6 @@ td {
     border-radius: 30px;
 }
 
-#add-manufacturer {
+/* #add-manufacturer {
     top: 1180;
-}
+} */
